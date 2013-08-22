@@ -21,6 +21,7 @@ MODULE_NAME='RmsSchedulingEventLogger'(dev vdvRMS)
 
 
 #INCLUDE 'RmsApi';
+#INCLUDE 'RmsEventListener'
 #INCLUDE 'RmsSchedulingApi';
 #INCLUDE 'RmsSchedulingEventListener';
 
