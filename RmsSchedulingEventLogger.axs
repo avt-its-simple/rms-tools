@@ -20,8 +20,6 @@ MODULE_NAME='RmsSchedulingEventLogger'(dev vdvRMS)
 #DEFINE INCLUDE_SCHEDULING_DAILY_COUNT_CALLBACK
 
 
-
-
 #INCLUDE 'RmsApi';
 #INCLUDE 'RmsSchedulingApi';
 #INCLUDE 'RmsSchedulingEventListener';
@@ -39,7 +37,9 @@ define_function setEventLoggerActive(char isActive) {
 }
 
 define_function log(char msg[]) {
-	send_string 0, "DATE, ' ', TIME, ' | ', msg";
+	if (loggerActive) {
+		send_string 0, "TIME, ' | ', msg";
+	}
 }
 
 define_function printRmsEventBookingResponse(RmsEventBookingResponse booking) {
