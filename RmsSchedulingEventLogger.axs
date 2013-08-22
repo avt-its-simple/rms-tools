@@ -39,7 +39,7 @@ define_function setEventLoggerActive(char isActive) {
 
 define_function log(char msg[]) {
 	if (loggerActive) {
-		send_string 0, "TIME, ' | ', msg";
+		send_string 0, "'>>>> ', msg";
 	}
 }
 
@@ -100,22 +100,22 @@ define_function RmsEventSchedulingBookingsRecordResponse(char isDefaultLocation,
 		integer recordCount,
 		char bookingId[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingBookingsRecordResponse(..) called');
+	log("'RmsEventSchedulingBookingsRecordResponse(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
 	log("'recordIndex: ', itoa(recordIndex)");
 	log("'recordCount: ', itoa(recordCount)");
 	log("'bookingId: ', bookingId");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingBookingResponse(char isDefaultLocation,
 		char bookingId[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingBookingResponse(..) called');
+	log("'RmsEventSchedulingBookingResponse(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
 	log("'bookingId: ', bookingId");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
@@ -124,12 +124,12 @@ define_function RmsEventSchedulingActiveResponse(char isDefaultLocation,
 		integer recordCount,
 		char bookingId[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingActiveResponse(..) called');
+	log("'RmsEventSchedulingActiveResponse(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
 	log("'recordIndex: ', itoa(recordIndex)");
 	log("'recordCount: ', itoa(recordCount)");
 	log("'bookingId: ', bookingId");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
@@ -138,113 +138,113 @@ define_function RmsEventSchedulingNextActiveResponse(char isDefaultLocation,
 		integer recordCount,
 		char bookingId[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingNextActiveResponse(..) called');
+	log("'RmsEventSchedulingNextActiveResponse(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
 	log("'recordIndex: ', itoa(recordIndex)");
 	log("'recordCount: ', itoa(recordCount)");
 	log("'bookingId: ', bookingId");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingSummariesDailyResponse(char isDefaultLocation,
 		RmsEventBookingDailyCount dailyCount) {
-	log('RmsEventSchedulingSummariesDailyResponse(..) called');
+	log("'RmsEventSchedulingSummariesDailyResponse(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
-	log('dailyCount: ');
+	log("'dailyCount: '");
 	printRmsEventBookingDailyCount(dailyCount);
 }
 
 define_function RmsEventSchedulingSummaryDailyResponse(char isDefaultLocation,
 		RmsEventBookingDailyCount dailyCount) {
-	log('RmsEventSchedulingSummaryDailyResponse(..) called');
+	log("'RmsEventSchedulingSummaryDailyResponse(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
-	log('dailyCount: ');
+	log("'dailyCount: '");
 	printRmsEventBookingDailyCount(dailyCount);
 }
 
 define_function RmsEventSchedulingCreateResponse(char isDefaultLocation,
 		char responseText[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingCreateResponse(..) called');
+	log("'RmsEventSchedulingCreateResponse(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
 	log("'responseText: ', responseText");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingExtendResponse(char isDefaultLocation,
 		char responseText[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingExtendResponse(..) called');
+	log("'RmsEventSchedulingExtendResponse(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
 	log("'responseText: ', responseText");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingEndResponse(char isDefaultLocation,
 		char responseText[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingEndResponse(..) called');
+	log("'RmsEventSchedulingEndResponse(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
 	log("'responseText: ', responseText");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingActiveUpdated(char bookingId[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingActiveUpdated(..) called');
+	log("'RmsEventSchedulingActiveUpdated(..) called at ', TIME");
 	log("'bookingId: ', bookingId");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingNextActiveUpdated(char bookingId[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingNextActiveUpdated(..) called');
+	log("'RmsEventSchedulingNextActiveUpdated(..) called at ', TIME");
 	log("'bookingId: ', bookingId");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingEventEnded(char bookingId[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingEventEnded(..) called');
+	log("'RmsEventSchedulingEventEnded(..) called at ', TIME");
 	log("'bookingId: ', bookingId");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingEventStarted(char bookingId[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingEventStarted(..) called');
+	log("'RmsEventSchedulingEventStarted(..) called at ', TIME");
 	log("'bookingId: ', bookingId");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingEventUpdated(char bookingId[],
 		RmsEventBookingResponse eventBookingResponse) {
-	log('RmsEventSchedulingEventUpdated(..) called');
+	log("'RmsEventSchedulingEventUpdated(..) called at ', TIME");
 	log("'bookingId: ', bookingId");
-	log('eventBookingResponse:');
+	log("'eventBookingResponse:'");
 	printRmsEventBookingResponse(eventBookingResponse);
 }
 
 define_function RmsEventSchedulingMonthlySummaryUpdated(integer dailyCountsTotal,
 		RmsEventBookingMonthlySummary monthlySummary) {
-	log('RmsEventSchedulingMonthlySummaryUpdated(..) called');
+	log("'RmsEventSchedulingMonthlySummaryUpdated(..) called at ', TIME");
 	log("'dailyCountsTotal: ', itoa(dailyCountsTotal)");
-	log('monthlySumary: ');
+	log("'monthlySumary: '");
 	printRmsEventBookingMonthlySummary(monthlySummary);
 }
 
 define_function RmsEventSchedulingDailyCount(char isDefaultLocation,
 		RmsEventBookingDailyCount dailyCount) {
-	log('RmsEventSchedulingDailyCount(..) called');
+	log("'RmsEventSchedulingDailyCount(..) called at ', TIME");
 	log("'isDefaultLocation: ', RmsBooleanValue(isDefaultLocation)");
-	log('dailyCount: ');
+	log("'dailyCount: '");
 	printRmsEventBookingDailyCount(dailyCount);
 }
