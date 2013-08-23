@@ -32,7 +32,7 @@ define_function char[RMS_MAX_CMD_LEN] RmsPackCmdParamQuoted(char cmd[],
 	if (find_string(cmd, cmdSep,1) != (length_string(cmd) - length_string(cmdSep) + 1)) {
 		tmp = "tmp, paramSep";
 	}
-	
+
 	// Escape any quotes
 	for (i = 1; i <= length_string(param); i++) {
 		if (param[i] == '"') {
