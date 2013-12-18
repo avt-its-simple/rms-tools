@@ -59,12 +59,9 @@ define_function RmsEventAssetRelocated(char assetClientKey[],
 }
 
 define_function RmsEventAssetLocation(char assetClientKey[], RmsLocation location) {
-	/*if (assetClientKey == locatioTracker.assetClientKey) {
+	if (assetClientKey == locationTracker.assetClientKey) {
 		locationTracker.location = location;
-	}*/
-	#WARN 'As we cannot currently associate an ?ASSET.LOCATION response with a device this is a hard coded hack'
-	locationTracker.location.id = tempLocationId;
-	locationTracker.location.name = tempLocationName
+	}
 }
 
 
