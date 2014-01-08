@@ -18,14 +18,14 @@ PROGRAM_NAME='RmsAssetLocationTracker'
 
 define_type
 
-structure assetLocationnTracker {
+structure assetLocationTracker {
 	char assetClientKey[50];
 	RmsLocation location;
 }
 
 define_variable
 
-volatile assetLocationnTracker locationTracker;
+volatile assetLocationTracker locationTracker;
 
 
 /**
