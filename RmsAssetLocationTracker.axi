@@ -25,7 +25,7 @@ compiler directive is declared prior to the inclusion of this axi.
  * Called when an update occurs to the location tracker's location.
  */
 #DEFINE LOCATION_TRACKER_UPDATE_CALLBACK
-define_function locationTrackerUpdated(RmsLocation location) {}
+define_function locationTrackerUpdated(integer trackerId, RmsLocation location) {}
 
 */
 
@@ -38,7 +38,9 @@ structure assetLocationTracker {
 
 define_variable
 
-volatile assetLocationTracker locationTracker;
+constant integer MAX_RMS_ASSET_LOCATION_TRACKERS = 2;
+
+volatile assetLocationTracker locationTracker[MAX_RMS_ASSET_LOCATION_TRACKERS];
 
 
 /**
@@ -47,8 +49,8 @@ volatile assetLocationTracker locationTracker;
  * @param	assetClientKey	a string continating the asset client key of the
  *							asset to track
  */
-define_function setLocationTrackerAsset(char assetClientKey[]) {
-	locationTracker.assetClientKey = assetClientKey;
+define_function setLocationTrackerAsset(integer trackerId, char assetClientKey[]) {
+	locationTracker[trackerId].assetClientKey = assetClientKey;
 	RmsAssetLocationRequest(locationTracker.assetClientKey)
 }
 
@@ -58,25 +60,34 @@ define_function setLocationTrackerAsset(char assetClientKey[]) {
 define_function RmsEventAssetRegistered(char registeredAssetClientKey[],
 		long assetId,
 		char newAssetRegistration) {
-	if (registeredAssetClientKey == locationTracker.assetClientKey) {
-		RmsAssetLocationRequest(locationTracker.assetClientKey)
+	stack_var integer i;
+	for (i = MAX_RMS_ASSET_LOCATION_TRACKERS; i; i--) {
+		if (registeredAssetClientKey == locationTracker[i].assetClientKey) {
+			RmsAssetLocationRequest(locationTracker[i].assetClientKey)
+		}
 	}
 }
 
 define_function RmsEventAssetRelocated(char assetClientKey[],
 		long assetId,
 		integer newLocationId) {
-	if (assetClientKey == locationTracker.assetClientKey) {
-		RmsAssetLocationRequest(locationTracker.assetClientKey)
+	stack_var integer i;
+	for (i = MAX_RMS_ASSET_LOCATION_TRACKERS; i; i--) {
+		if (assetClientKey == locationTracker[i].assetClientKey) {
+			RmsAssetLocationRequest(locationTracker[i].assetClientKey)
+		}
 	}
 }
 
 define_function RmsEventAssetLocation(char assetClientKey[], RmsLocation location) {
-	if (assetClientKey == locationTracker.assetClientKey) {
-		locationTracker.location = location;
-		#IF_DEFINED LOCATION_TRACKER_UPDATE_CALLBACK
-		locationTrackerUpdated(location);
-		#END_IF
+	stack_var integer i;
+	for (i = MAX_RMS_ASSET_LOCATION_TRACKERS; i; i--) {
+		if (assetClientKey == locationTracker[i].assetClientKey) {
+			locationTracker[i].location = location;
+			#IF_DEFINED LOCATION_TRACKER_UPDATE_CALLBACK
+			locationTrackerUpdated(i, location);
+			#END_IF
+		}
 	}
 }
 
