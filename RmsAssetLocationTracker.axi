@@ -38,7 +38,7 @@ structure assetLocationTracker {
 
 define_variable
 
-constant integer MAX_RMS_ASSET_LOCATION_TRACKERS = 2;
+constant integer MAX_RMS_ASSET_LOCATION_TRACKERS = 8;
 
 volatile assetLocationTracker locationTracker[MAX_RMS_ASSET_LOCATION_TRACKERS];
 
